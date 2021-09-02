@@ -79,8 +79,8 @@ It is possible to use different directories to read tests from and to generate r
 Test reports are automatically generated to the Results folder by defining the location with '-d' in the robot run command:
     
     robot \
-        -d Results Tests <log.html, output.xml, report.html>
-        -d Reports <this will create a new folder titled 'Reports' where the test report files will be saved to> 
+        -d Results Tests <log.html, output.xml, report.html will be generated in the Reults folder>
+        -d Reports Tests <this will create a new folder in the pwned-test root directory stitled 'Reports' where the test report files will be saved to> 
         
 
 ### Accessing the logs
