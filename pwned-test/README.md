@@ -32,8 +32,8 @@ Download the latest version for your operating system (eg: macOS)
 
 ### Step 2: Install Pip3
 * Follow this link https://pip.pypa.io/en/stable/installation/ to download pip3 on your computer
-* Follow the instructions on the page and then after successfully downloading Pip3, run python3 get-pip.py in your terminal
-* This will install pip3 into your computer and then you can check the installation of pip3 by running which pip3 in your terminal.
+* Follow the instructions on the page and then after successfully downloading Pip3, run `python3 get-pip.py` in your terminal
+* This will install pip3 into your computer and then you can check the installation of pip3 by running `which pip3` in your terminal.
 
 ### Step 3: install requirements 
 Open the Command-line interface (CLI) and navigate to the pwned-test folder and run `pip3 install requirements.txt`
