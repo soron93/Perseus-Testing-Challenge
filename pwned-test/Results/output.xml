@@ -1,35 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.1 (Python 3.8.3 on darwin)" generated="20210901 15:20:26.853" rpa="false" schemaversion="2">
-<suite id="s1" name="PwnageTest" source="/Users/beta/TEST/pwned-test/Tests/PwnageTest.robot">
-<test id="s1-t1" name="First scenario: User should be able to check if email is in a data breach">
+<robot generator="Robot 4.1 (Python 3.8.3 on darwin)" generated="20210902 16:26:21.327" rpa="false" schemaversion="2">
+<suite id="s1" name="Full Regression" source="/Users/beta/QA/QA/pwned-test/Tests">
+<suite id="s1-s1" name="GherkinPwnageTest" source="/Users/beta/QA/QA/pwned-test/Tests/GherkinPwnageTest.robot">
+<test id="s1-s1-t1" name="First scenario: User should be able to check if email is in a data breach">
 <kw name="Begin Web Test" library="Common" type="SETUP">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>about:blank</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20210901 15:20:27.005" level="INFO">Opening browser 'ff' to base url 'about:blank'.</msg>
-<msg timestamp="20210901 15:20:27.012" level="INFO">Firefox driver log is always forced to to: /Users/beta/TEST/pwned-test/Results/geckodriver-1.log</msg>
-<status status="PASS" starttime="20210901 15:20:27.005" endtime="20210901 15:20:30.581"/>
+<msg timestamp="20210902 16:26:21.628" level="INFO">Opening browser 'gc' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20210902 16:26:21.627" endtime="20210902 16:26:23.705"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:27.004" endtime="20210901 15:20:30.581"/>
+<status status="PASS" starttime="20210902 16:26:21.627" endtime="20210902 16:26:23.706"/>
+</kw>
+<kw name="Given the user checks if email one has been pwned" library="GherkinPwnageApp">
+<kw name="Load" library="LandingPage">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${START_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20210902 16:26:23.708" level="INFO">Opening url 'https://haveibeenpwned.com/'</msg>
+<status status="PASS" starttime="20210902 16:26:23.708" endtime="20210902 16:26:25.548"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:23.707" endtime="20210902 16:26:25.548"/>
+</kw>
+<kw name="Verify Page Loaded" library="LandingPage">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Check if your email or phone is in a data breach</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20210902 16:26:25.549" endtime="20210902 16:26:25.563"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:25.548" endtime="20210902 16:26:25.563"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:23.706" endtime="20210902 16:26:25.563"/>
+</kw>
+<kw name="And user enters first scenario search criteria" library="GherkinPwnageApp">
+<kw name="Testing The Email In The First Scenario" library="SearchPwnage">
+<kw name="Enter First Scenario Search Email" library="SearchPwnage">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${SEARCH_FIELD}</arg>
+<arg>${SEARCH_PWNED_EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210902 16:26:25.565" level="INFO">Typing text 'test@something.com' into text field 'id=Account'.</msg>
+<status status="PASS" starttime="20210902 16:26:25.565" endtime="20210902 16:26:25.721"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:25.564" endtime="20210902 16:26:25.722"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:25.564" endtime="20210902 16:26:25.722"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:25.564" endtime="20210902 16:26:25.722"/>
+</kw>
+<kw name="When the user clicks on pwned button" library="GherkinPwnageApp">
+<kw name="Click Pwnage Button" library="SearchPwnage">
+<doc>Clicks on the pwnage search button</doc>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${PWNED_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20210902 16:26:25.724" level="INFO">Clicking button 'id=searchPwnage'.</msg>
+<status status="PASS" starttime="20210902 16:26:25.723" endtime="20210902 16:26:25.780"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:25.723" endtime="20210902 16:26:25.780"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:25.722" endtime="20210902 16:26:25.780"/>
+</kw>
+<kw name="Then the first email is verified to be in a data breach" library="GherkinPwnageApp">
+<kw name="Verify First Scenario Search Completed" library="SearchResults">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Oh no — pwned!</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20210902 16:26:25.781" endtime="20210902 16:26:25.815"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:25.781" endtime="20210902 16:26:25.816"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:25.781" endtime="20210902 16:26:25.816"/>
+</kw>
+<kw name="End Web Test" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210902 16:26:25.817" endtime="20210902 16:26:25.893"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:25.816" endtime="20210902 16:26:25.893"/>
+</kw>
+<doc>User checks that website shows pwned-warning using Gherkin syntax</doc>
+<tag>Current</tag>
+<status status="PASS" starttime="20210902 16:26:21.626" endtime="20210902 16:26:25.893"/>
+</test>
+<test id="s1-s1-t2" name="Second scenario: User should be able to check if email is not in a data breach">
+<kw name="Begin Web Test" library="Common" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210902 16:26:25.897" level="INFO">Opening browser 'gc' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20210902 16:26:25.896" endtime="20210902 16:26:27.860"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:25.895" endtime="20210902 16:26:27.860"/>
+</kw>
+<kw name="Given the user checks if email two has not been pwned" library="GherkinPwnageApp">
+<kw name="Load" library="LandingPage">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${START_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20210902 16:26:27.862" level="INFO">Opening url 'https://haveibeenpwned.com/'</msg>
+<status status="PASS" starttime="20210902 16:26:27.862" endtime="20210902 16:26:29.717"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:27.861" endtime="20210902 16:26:29.717"/>
+</kw>
+<kw name="Verify Page Loaded" library="LandingPage">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Check if your email or phone is in a data breach</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20210902 16:26:29.718" endtime="20210902 16:26:29.731"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:29.718" endtime="20210902 16:26:29.732"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:27.861" endtime="20210902 16:26:29.732"/>
+</kw>
+<kw name="And user enters second scenario search criteria" library="GherkinPwnageApp">
+<kw name="Testing The Email In The Second Scenario" library="SearchPwnage">
+<kw name="Enter Second Scenario Search Email" library="SearchPwnage">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${SEARCH_FIELD}</arg>
+<arg>${SEARCH_NOT_PWNED_EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210902 16:26:29.734" level="INFO">Typing text 'qwerty@elsewhere.com' into text field 'id=Account'.</msg>
+<status status="PASS" starttime="20210902 16:26:29.733" endtime="20210902 16:26:29.875"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:29.733" endtime="20210902 16:26:29.875"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:29.733" endtime="20210902 16:26:29.875"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:29.732" endtime="20210902 16:26:29.876"/>
+</kw>
+<kw name="When the user clicks on pwned button" library="GherkinPwnageApp">
+<kw name="Click Pwnage Button" library="SearchPwnage">
+<doc>Clicks on the pwnage search button</doc>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${PWNED_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20210902 16:26:29.878" level="INFO">Clicking button 'id=searchPwnage'.</msg>
+<status status="PASS" starttime="20210902 16:26:29.877" endtime="20210902 16:26:29.929"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:29.877" endtime="20210902 16:26:29.930"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:29.876" endtime="20210902 16:26:29.930"/>
+</kw>
+<kw name="Then the second email is verified not to be in a data breach" library="GherkinPwnageApp">
+<kw name="Verify Second Scenario Search Completed" library="SearchResults">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Good news — no pwnage found!</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20210902 16:26:29.931" endtime="20210902 16:26:29.963"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:29.931" endtime="20210902 16:26:29.963"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:29.930" endtime="20210902 16:26:29.964"/>
+</kw>
+<kw name="End Web Test" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210902 16:26:29.964" endtime="20210902 16:26:30.051"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:29.964" endtime="20210902 16:26:30.051"/>
+</kw>
+<doc>User checks that website shows no pwned-warning using Gherkin syntax</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20210902 16:26:25.894" endtime="20210902 16:26:30.051"/>
+</test>
+<doc>Using the Gherkin syntax; This test will verify if the given emails have been compromised</doc>
+<status status="PASS" starttime="20210902 16:26:21.355" endtime="20210902 16:26:30.054"/>
+</suite>
+<suite id="s1-s2" name="PwnageTest" source="/Users/beta/QA/QA/pwned-test/Tests/PwnageTest.robot">
+<test id="s1-s2-t1" name="First scenario: User should be able to check if email is in a data breach">
+<kw name="Begin Web Test" library="Common" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210902 16:26:30.070" level="INFO">Opening browser 'gc' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20210902 16:26:30.069" endtime="20210902 16:26:32.075"/>
+</kw>
+<status status="PASS" starttime="20210902 16:26:30.068" endtime="20210902 16:26:32.076"/>
 </kw>
 <kw name="Check if email in scenario one has been pwned" library="PwnedApp">
 <kw name="Load" library="LandingPage">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>${START_URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20210901 15:20:30.583" level="INFO">Opening url 'https://haveibeenpwned.com/'</msg>
-<status status="PASS" starttime="20210901 15:20:30.582" endtime="20210901 15:20:32.324"/>
+<msg timestamp="20210902 16:26:32.077" level="INFO">Opening url 'https://haveibeenpwned.com/'</msg>
+<status status="PASS" starttime="20210902 16:26:32.077" endtime="20210902 16:26:34.635"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:30.582" endtime="20210901 15:20:32.324"/>
+<status status="PASS" starttime="20210902 16:26:32.077" endtime="20210902 16:26:34.636"/>
 </kw>
 <kw name="Verify Page Loaded" library="LandingPage">
 <kw name="Wait Until Page Contains" library="SeleniumLibrary">
 <arg>Check if your email or phone is in a data breach</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20210901 15:20:32.325" endtime="20210901 15:20:32.338"/>
+<status status="PASS" starttime="20210902 16:26:34.637" endtime="20210902 16:26:34.650"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:32.325" endtime="20210901 15:20:32.338"/>
+<status status="PASS" starttime="20210902 16:26:34.636" endtime="20210902 16:26:34.650"/>
 </kw>
 <kw name="Testing The Email In The First Scenario" library="SearchPwnage">
 <kw name="Enter First Scenario Search Email" library="SearchPwnage">
@@ -37,73 +205,72 @@
 <arg>${SEARCH_FIELD}</arg>
 <arg>${SEARCH_PWNED_EMAIL}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20210901 15:20:32.340" level="INFO">Typing text 'test@something.com' into text field 'id=Account'.</msg>
-<status status="PASS" starttime="20210901 15:20:32.339" endtime="20210901 15:20:32.372"/>
+<msg timestamp="20210902 16:26:34.653" level="INFO">Typing text 'test@something.com' into text field 'id=Account'.</msg>
+<status status="PASS" starttime="20210902 16:26:34.652" endtime="20210902 16:26:34.798"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:32.339" endtime="20210901 15:20:32.373"/>
+<status status="PASS" starttime="20210902 16:26:34.651" endtime="20210902 16:26:34.798"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:32.339" endtime="20210901 15:20:32.373"/>
+<status status="PASS" starttime="20210902 16:26:34.650" endtime="20210902 16:26:34.798"/>
 </kw>
 <kw name="Click Pwnage Button" library="SearchPwnage">
 <doc>Clicks on the pwnage search button</doc>
 <kw name="Click Button" library="SeleniumLibrary">
 <arg>${PWNED_BUTTON}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20210901 15:20:32.374" level="INFO">Clicking button 'id=searchPwnage'.</msg>
-<status status="PASS" starttime="20210901 15:20:32.373" endtime="20210901 15:20:32.612"/>
+<msg timestamp="20210902 16:26:34.799" level="INFO">Clicking button 'id=searchPwnage'.</msg>
+<status status="PASS" starttime="20210902 16:26:34.799" endtime="20210902 16:26:34.884"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:32.373" endtime="20210901 15:20:32.612"/>
+<status status="PASS" starttime="20210902 16:26:34.798" endtime="20210902 16:26:34.885"/>
 </kw>
 <kw name="Verify First Scenario Search Completed" library="SearchResults">
 <kw name="Wait Until Page Contains" library="SeleniumLibrary">
 <arg>Oh no — pwned!</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20210901 15:20:32.613" endtime="20210901 15:20:32.618"/>
+<status status="PASS" starttime="20210902 16:26:34.885" endtime="20210902 16:26:34.896"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:32.613" endtime="20210901 15:20:32.618"/>
+<status status="PASS" starttime="20210902 16:26:34.885" endtime="20210902 16:26:34.896"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:30.581" endtime="20210901 15:20:32.619"/>
+<status status="PASS" starttime="20210902 16:26:32.076" endtime="20210902 16:26:34.896"/>
 </kw>
 <kw name="End Web Test" library="Common" type="TEARDOWN">
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20210901 15:20:32.620" endtime="20210901 15:20:33.135"/>
+<status status="PASS" starttime="20210902 16:26:34.897" endtime="20210902 16:26:34.971"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:32.619" endtime="20210901 15:20:33.135"/>
+<status status="PASS" starttime="20210902 16:26:34.897" endtime="20210902 16:26:34.971"/>
 </kw>
 <doc>User checks that website shows pwned-warning</doc>
 <tag>Current</tag>
-<status status="PASS" starttime="20210901 15:20:27.002" endtime="20210901 15:20:33.135"/>
+<status status="PASS" starttime="20210902 16:26:30.066" endtime="20210902 16:26:34.971"/>
 </test>
-<test id="s1-t2" name="Second scenario: User should be able to check if email is not in a data breach">
+<test id="s1-s2-t2" name="Second scenario: User should be able to check if email is not in a data breach">
 <kw name="Begin Web Test" library="Common" type="SETUP">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>about:blank</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20210901 15:20:33.139" level="INFO">Opening browser 'ff' to base url 'about:blank'.</msg>
-<msg timestamp="20210901 15:20:33.140" level="INFO">Firefox driver log is always forced to to: /Users/beta/TEST/pwned-test/Results/geckodriver-2.log</msg>
-<status status="PASS" starttime="20210901 15:20:33.139" endtime="20210901 15:20:36.480"/>
+<msg timestamp="20210902 16:26:34.975" level="INFO">Opening browser 'gc' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20210902 16:26:34.974" endtime="20210902 16:26:36.929"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:33.138" endtime="20210901 15:20:36.481"/>
+<status status="PASS" starttime="20210902 16:26:34.974" endtime="20210902 16:26:36.929"/>
 </kw>
 <kw name="Check if email in scenario two has not been pwned" library="PwnedApp">
 <kw name="Load" library="LandingPage">
 <kw name="Go To" library="SeleniumLibrary">
 <arg>${START_URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20210901 15:20:36.483" level="INFO">Opening url 'https://haveibeenpwned.com/'</msg>
-<status status="PASS" starttime="20210901 15:20:36.482" endtime="20210901 15:20:38.006"/>
+<msg timestamp="20210902 16:26:36.931" level="INFO">Opening url 'https://haveibeenpwned.com/'</msg>
+<status status="PASS" starttime="20210902 16:26:36.930" endtime="20210902 16:26:38.912"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:36.482" endtime="20210901 15:20:38.006"/>
+<status status="PASS" starttime="20210902 16:26:36.930" endtime="20210902 16:26:38.913"/>
 </kw>
 <kw name="Verify Page Loaded" library="LandingPage">
 <kw name="Wait Until Page Contains" library="SeleniumLibrary">
 <arg>Check if your email or phone is in a data breach</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20210901 15:20:38.007" endtime="20210901 15:20:38.018"/>
+<status status="PASS" starttime="20210902 16:26:38.913" endtime="20210902 16:26:38.924"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:38.007" endtime="20210901 15:20:38.018"/>
+<status status="PASS" starttime="20210902 16:26:38.913" endtime="20210902 16:26:38.925"/>
 </kw>
 <kw name="Testing The Email In The Second Scenario" library="SearchPwnage">
 <kw name="Enter Second Scenario Search Email" library="SearchPwnage">
@@ -111,57 +278,61 @@
 <arg>${SEARCH_FIELD}</arg>
 <arg>${SEARCH_NOT_PWNED_EMAIL}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20210901 15:20:38.020" level="INFO">Typing text 'qwerty@elsewhere.com' into text field 'id=Account'.</msg>
-<status status="PASS" starttime="20210901 15:20:38.020" endtime="20210901 15:20:38.051"/>
+<msg timestamp="20210902 16:26:38.926" level="INFO">Typing text 'qwerty@elsewhere.com' into text field 'id=Account'.</msg>
+<status status="PASS" starttime="20210902 16:26:38.926" endtime="20210902 16:26:39.038"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:38.019" endtime="20210901 15:20:38.051"/>
+<status status="PASS" starttime="20210902 16:26:38.925" endtime="20210902 16:26:39.038"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:38.019" endtime="20210901 15:20:38.052"/>
+<status status="PASS" starttime="20210902 16:26:38.925" endtime="20210902 16:26:39.038"/>
 </kw>
 <kw name="Click Pwnage Button" library="SearchPwnage">
 <doc>Clicks on the pwnage search button</doc>
 <kw name="Click Button" library="SeleniumLibrary">
 <arg>${PWNED_BUTTON}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20210901 15:20:38.053" level="INFO">Clicking button 'id=searchPwnage'.</msg>
-<status status="PASS" starttime="20210901 15:20:38.053" endtime="20210901 15:20:38.290"/>
+<msg timestamp="20210902 16:26:39.039" level="INFO">Clicking button 'id=searchPwnage'.</msg>
+<status status="PASS" starttime="20210902 16:26:39.039" endtime="20210902 16:26:39.107"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:38.052" endtime="20210901 15:20:38.290"/>
+<status status="PASS" starttime="20210902 16:26:39.038" endtime="20210902 16:26:39.107"/>
 </kw>
 <kw name="Verify Second Scenario Search Completed" library="SearchResults">
 <kw name="Wait Until Page Contains" library="SeleniumLibrary">
 <arg>Good news — no pwnage found!</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20210901 15:20:38.291" endtime="20210901 15:20:38.295"/>
+<status status="PASS" starttime="20210902 16:26:39.108" endtime="20210902 16:26:39.118"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:38.291" endtime="20210901 15:20:38.295"/>
+<status status="PASS" starttime="20210902 16:26:39.108" endtime="20210902 16:26:39.118"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:36.481" endtime="20210901 15:20:38.296"/>
+<status status="PASS" starttime="20210902 16:26:36.929" endtime="20210902 16:26:39.118"/>
 </kw>
 <kw name="End Web Test" library="Common" type="TEARDOWN">
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20210901 15:20:38.296" endtime="20210901 15:20:38.809"/>
+<status status="PASS" starttime="20210902 16:26:39.119" endtime="20210902 16:26:39.194"/>
 </kw>
-<status status="PASS" starttime="20210901 15:20:38.296" endtime="20210901 15:20:38.809"/>
+<status status="PASS" starttime="20210902 16:26:39.119" endtime="20210902 16:26:39.194"/>
 </kw>
 <doc>User checks that website does not show pwned-warning</doc>
 <tag>Smoke</tag>
-<status status="PASS" starttime="20210901 15:20:33.137" endtime="20210901 15:20:38.810"/>
+<status status="PASS" starttime="20210902 16:26:34.973" endtime="20210902 16:26:39.194"/>
 </test>
 <doc>This test will verify if the given emails have been compromised.</doc>
-<status status="PASS" starttime="20210901 15:20:26.856" endtime="20210901 15:20:38.812"/>
+<status status="PASS" starttime="20210902 16:26:30.057" endtime="20210902 16:26:39.195"/>
+</suite>
+<status status="PASS" starttime="20210902 16:26:21.328" endtime="20210902 16:26:39.198"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">Current</stat>
-<stat pass="1" fail="0" skip="0">Smoke</stat>
+<stat pass="2" fail="0" skip="0">Current</stat>
+<stat pass="2" fail="0" skip="0">Smoke</stat>
 </tag>
 <suite>
-<stat pass="2" fail="0" skip="0" id="s1" name="PwnageTest">PwnageTest</stat>
+<stat pass="4" fail="0" skip="0" id="s1" name="Full Regression">Full Regression</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s1" name="GherkinPwnageTest">Full Regression.GherkinPwnageTest</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s2" name="PwnageTest">Full Regression.PwnageTest</stat>
 </suite>
 </statistics>
 <errors>
