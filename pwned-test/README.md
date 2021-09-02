@@ -80,7 +80,7 @@ Test reports are automatically generated to the Results folder by defining the l
     
     robot \
         -d Results Tests <log.html, output.xml, report.html will be generated in the Reults folder>
-        -d Reports Tests <this will create a new folder in the pwned-test root directory titled 'Reports' where the test report files will be saved to> 
+        -d Reports Tests <a new folder is created in the pwned-test root directory titled 'Reports' where the test report files will be saved to> 
         
 
 ### Accessing the logs
