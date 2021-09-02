@@ -16,7 +16,6 @@ Scenario two:
 
 
 ## What is it?
-
 This project consist of a test suite utilizing Selenium library and the Robot Framework.
 
 * The PwnageTest case is procedurally written where as the GherkinPwnageTest is written with gherkin syntax.
@@ -24,20 +23,26 @@ This project consist of a test suite utilizing Selenium library and the Robot Fr
 ## Getting Started 
 Here are the prerequisites for running this testing framework.
 
-* Step 1: Install Python 
-
+### Step 1: Install Python 
 Visit the following website to download Python software.
 
 https://www.python.org/downloads/
 
 Download the latest version for your operating system (eg: macOS)
 
-* Step 2: Open the Command-line interface (CLI) and navigate to the pwned-test folder and run `pip3 install requirements.txt`
+### Step 2: Install Pip3
+* Follow this link https://pip.pypa.io/en/stable/installation/ to download pip3 on your computer
+* Follow the instructions on the page and then after successfully downloading Pip3, run python3 get-pip.py in your terminal
+* This will install pip3 into your computer and then you can check the installation of pip3 by running which pip3 in your terminal.
 
-This command will insatll all the required software the project will use to run the test suite including robotframework, selenium library, chromedriver, geckodriver and more.  
+### Step 3: install requirements 
+Open the Command-line interface (CLI) and navigate to the pwned-test folder and run `pip3 install requirements.txt`
+
+This command will install all the required software the project will use to run the test suite including robotframework, selenium library, chromedriver, geckodriver and more.  
  
-## Running the test
 
+
+## Running the test
 * Navigate to the pwned-test directory with the CLI.
 * This test suite can be run using the following commands:
 
@@ -56,14 +61,12 @@ This command will insatll all the required software the project will use to run 
 
 
 ### Switching browsers
-
 Browsers can be easily switched becasue `${BROWSER}` is a Robot variable that is used in the test cases. This allows changes to be made to the browser in a single place if needed.
 
 Simply change`${BROWSER} = gc` to `${BROWSER} = ff` in the robot test to run the test suite in Firefox.
 
 
 ### Testing emails
-
 It is possible to change the emails that are being checked for a data breach by changing the emails in the environment variables:
 
 * `${SEARCH_PWNED_EMAIL` = thatemail@elsewhere.com
@@ -71,7 +74,6 @@ It is possible to change the emails that are being checked for a data breach by 
 
 
 ### Changing the tests and reports directories
-
 It is possible to use different directories to read tests from and to generate reports to. This is useful when using a complex test file structure. 
 
 Test reports are automatically generated to the Results folder by defining the location with '-d' in the robot run command:
@@ -82,7 +84,6 @@ Test reports are automatically generated to the Results folder by defining the l
         
 
 ### Accessing the logs
-
 The logs can be accessed by simply opening the report.html in any browser. The report file gives general informaiton with searchable criteria about the test suite. In case further investigation is required, open the log.html file with a browser for a more detailed view of the test cases. The log file gives information about each step the test takes. 
 
 
