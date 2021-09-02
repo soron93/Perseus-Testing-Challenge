@@ -52,7 +52,7 @@ This command will install all the required software the project will use to run 
     
     `robot -d Results Tests/PwnageTest.robot` 
 
-        This will run one all test cases within a single test
+        This will run all test cases within a single test
 
     `robot -d Results -i Smoke Tests/GherkinPwnageTest.robot` 
 
